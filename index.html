@@ -3,16 +3,16 @@
 header{position:fixed;top:0;width:100%;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);z-index:9}
 .logo{letter-spacing:3px;font-weight:bold;color:#c9a227}
 .btn{display:inline-block;background:linear-gradient(135deg,#c9a227,#8a6d1b);color:#000;padding:14px 28px;border-radius:40px;text-decoration:none;font-weight:bold;box-shadow:0 10px 30px rgba(201,162,39,.4)}
+canvas#hero3d{position:absolute;inset:0;width:100%;height:100%;z-index:0}
 .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:100px 20px;background:#050508}
 .hero h1{position:relative;z-index:1;font-size:clamp(42px,9vw,84px);margin:0;text-shadow:0 10px 40px rgba(201,162,39,.5)}
 .hero p{position:relative;z-index:1;font-size:20px;color:#c9a227}
 .hero .sub{color:#ccc;font-size:16px}
-
 section{padding:60px 20px;max-width:1050px;margin:auto}
 h2{color:#c9a227;font-size:32px;text-align:center}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;perspective:1200px}
 .card{background:#111;border:1px solid #c9a227;border-radius:18px;overflow:hidden;transform-style:preserve-3d;transition:transform .4s}
-.card:hover{transform:rotateY(8deg) rotateX(4deg) translateY(-8px)}
+.card:hover{transform:rotateY(14deg) rotateX(8deg) translateY(-10px) scale(1.03)}
 .card img{width:100%;height:180px;object-fit:cover}
 .card div{padding:18px}
 .card .price{color:#c9a227;font-weight:bold}
@@ -21,9 +21,19 @@ select,input{padding:13px;margin:6px;border-radius:10px;border:1px solid #c9a227
 .book{text-align:center}
 footer{text-align:center;padding:40px;color:#888}
 .reveal{opacity:0;transform:translateY(40px);transition:.8s}.reveal.show{opacity:1;transform:none}
+.stage{perspective:1200px;height:340px;display:flex;justify-content:center;align-items:center;overflow:hidden}
+.ring3d{position:relative;width:260px;height:180px;transform-style:preserve-3d;animation:spin3d 18s linear infinite}
+.ring3d:hover{animation-play-state:paused}
+@keyframes spin3d{from{transform:rotateY(0)}to{transform:rotateY(360deg)}}
+.panel{position:absolute;inset:0;transform:rotateY(calc(var(--i)*60deg)) translateZ(300px);background:#111;border:1px solid #c9a227;border-radius:14px;overflow:hidden}
+.panel img{width:100%;height:140px;object-fit:cover}
+.panel p{text-align:center;margin:6px;color:#c9a227;font-weight:bold}
+.hero h1{background:linear-gradient(90deg,#fff,#c9a227,#fff,#c9a227);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 4s linear infinite}
+@keyframes shine{to{background-position:200% center}}
+.card{transform-style:preserve-3d}
 </style></head><body>
 <header><div class="logo">DUBAI NIGHT RENTALS</div><a class="btn" href="#fleet" style="padding:10px 20px">Book Now</a></header>
-<div class="hero" style="background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.88)),url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1600') center/cover"><div style="position:relative;z-index:1"><p class="quote">We don't rent cars. We hand you the keys.</p><h1>DRIVE THE<br>DUBAI NIGHT</h1><p>YOUR SEAT IS WAITING.</p><p class="sub">Bugatti, Rolls-Royce, Lamborghini, delivered to your hotel or the airport.</p><a class="btn" href="#fleet">See The Fleet</a></div></div>
+<div class="hero" style="background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.88)),url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1600') center/cover"><canvas id="hero3d"></canvas><div style="position:relative;z-index:1"><p class="quote">We don't rent cars. We hand you the keys.</p><h1>DRIVE THE<br>DUBAI NIGHT</h1><p>YOUR SEAT IS WAITING.</p><p class="sub">Bugatti, Rolls-Royce, Lamborghini, delivered to your hotel or the airport.</p><a class="btn" href="#fleet">See The Fleet</a></div></div>
 <section class="reveal"><h2>The Fleet</h2><div class="grid">
 <div class="card"><img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=800"><div><h3>Bugatti Chiron</h3><p class="price">AED 12,000 / day</p><p>1500 HP, top speed 420 km/h.</p></div></div>
 <div class="card"><img src="https://images.unsplash.com/photo-1563720223185-11003d516935?w=800"><div><h3>Rolls-Royce Cullinan</h3><p class="price">AED 4,500 / day</p><p>First class comfort, chauffeur on request.</p></div></div>
@@ -32,7 +42,17 @@ footer{text-align:center;padding:40px;color:#888}
 <div class="card"><img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800"><div><h3>McLaren 720S</h3><p class="price">AED 3,200 / day</p><p>Light, fast, pure driving thrill.</p></div></div>
 <div class="card"><img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800"><div><h3>Aston Martin DB12</h3><p class="price">AED 3,800 / day</p><p>British luxury, grand tourer.</p></div></div>
 </div></section>
+<section class="reveal"><h2>Experience in 3D</h2><div class="stage"><div class="ring3d">
+<div class="panel" style="--i:0"><img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=600"><p>Bugatti Chiron</p></div>
+<div class="panel" style="--i:1"><img src="https://images.unsplash.com/photo-1563720223185-11003d516935?w=600"><p>Rolls-Royce Cullinan</p></div>
+<div class="panel" style="--i:2"><img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=600"><p>Mercedes G-Wagon</p></div>
+<div class="panel" style="--i:3"><img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=600"><p>Lamborghini Revuelto</p></div>
+<div class="panel" style="--i:4"><img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=600"><p>McLaren 720S</p></div>
+<div class="panel" style="--i:5"><img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=600"><p>Aston Martin DB12</p></div>
+</div></div><p style="text-align:center;color:#c9a227">Drag nahi, ye khud ghumta hai, har car 3D me</p></section>
 <section class="book reveal"><h2>Book in 30 seconds</h2><p>Pick your car, dates and delivery location.</p><select><option>Bugatti Chiron</option><option>Rolls-Royce Cullinan</option><option>Mercedes G-Wagon</option><option>Lamborghini Revuelto</option></select><br><input type="date"><br><a class="btn" href="https://wa.me/971500000000">Book on WhatsApp</a></section>
 <footer>Dubai Night Rentals, Dubai, UAE</footer>
 <script>const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('show')}));document.querySelectorAll('.reveal').forEach(el=>io.observe(el));</script>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js"}}</script>
+<script type="module">import * as THREE from 'three';const c=document.getElementById('hero3d');if(c){const s=new THREE.Scene();const cam=new THREE.PerspectiveCamera(45,innerWidth/innerHeight,.1,100);cam.position.set(0,1,6);const r=new THREE.WebGLRenderer({canvas:c,antialias:true,alpha:true});r.setSize(innerWidth,innerHeight);r.setPixelRatio(Math.min(devicePixelRatio,2));s.add(new THREE.DirectionalLight(0xffffff,2));s.add(new THREE.AmbientLight(0xffffff,.4));const m=new THREE.Mesh(new THREE.TorusKnotGeometry(.9,.28,200,32),new THREE.MeshPhysicalMaterial({color:0xc9a227,roughness:.15,metalness:.85,clearcoat:1}));m.position.set(0,0,-1);s.add(m);const rings=[];for(let i=0;i<3;i++){const rg=new THREE.Mesh(new THREE.TorusGeometry(1.6+i*.45,.025,16,100),new THREE.MeshPhysicalMaterial({color:0xc9a227,roughness:.3,metalness:.8}));rg.position.set(0,0,-1);s.add(rg);rings.push(rg)}const pg=new THREE.BufferGeometry();const pos=[];for(let i=0;i<350;i++){pos.push((Math.random()-.5)*12,(Math.random()-.5)*7,(Math.random()-.5)*5)}pg.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));const pts=new THREE.Points(pg,new THREE.PointsMaterial({color:0xc9a227,size:.06}));s.add(pts);let tx=0,ty=0;addEventListener('pointermove',e=>{tx=(e.clientX/innerWidth-.5)*2;ty=(e.clientY/innerHeight-.5)*2});const cl=new THREE.Clock();(function fr(){const tm=cl.getElapsedTime();m.rotation.y=tm*.4;m.rotation.x=tm*.15;rings.forEach((rg,i)=>{rg.rotation.x=tm*(.2+i*.1);rg.rotation.y=tm*.15});pts.rotation.y=tm*.05;cam.position.x=tx*.8;cam.position.y=1-ty*.5;cam.lookAt(0,0,-1);r.render(s,cam);requestAnimationFrame(fr)})();}</script>
 </body></html>
