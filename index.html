@@ -1,58 +1,542 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Drive The Dubai Night | Luxury Car Rental Dubai</title><style>
-*{box-sizing:border-box}body{margin:0;font-family:Georgia,serif;background:#050508;color:#fff;overflow-x:hidden}
-header{position:fixed;top:0;width:100%;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);z-index:9}
-.logo{letter-spacing:3px;font-weight:bold;color:#c9a227}
-.btn{display:inline-block;background:linear-gradient(135deg,#c9a227,#8a6d1b);color:#000;padding:14px 28px;border-radius:40px;text-decoration:none;font-weight:bold;box-shadow:0 10px 30px rgba(201,162,39,.4)}
-canvas#hero3d{position:absolute;inset:0;width:100%;height:100%;z-index:0}
-.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:100px 20px;background:#050508}
-.hero h1{position:relative;z-index:1;font-size:clamp(42px,9vw,84px);margin:0;text-shadow:0 10px 40px rgba(201,162,39,.5)}
-.hero p{position:relative;z-index:1;font-size:20px;color:#c9a227}
-.hero .sub{color:#ccc;font-size:16px}
-section{padding:60px 20px;max-width:1050px;margin:auto}
-h2{color:#c9a227;font-size:32px;text-align:center}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;perspective:1200px}
-.card{background:#111;border:1px solid #c9a227;border-radius:18px;overflow:hidden;transform-style:preserve-3d;transition:transform .4s}
-.card:hover{transform:rotateY(14deg) rotateX(8deg) translateY(-10px) scale(1.03)}
-.card img{width:100%;height:180px;object-fit:cover}
-.card div{padding:18px}
-.card .price{color:#c9a227;font-weight:bold}
-.quote{text-align:center;font-style:italic;color:#c9a227}
-select,input{padding:13px;margin:6px;border-radius:10px;border:1px solid #c9a227;background:#222;color:#fff;width:90%;max-width:340px}
-.book{text-align:center}
-footer{text-align:center;padding:40px;color:#888}
-.reveal{opacity:0;transform:translateY(40px);transition:.8s}.reveal.show{opacity:1;transform:none}
-.stage{perspective:1200px;height:340px;display:flex;justify-content:center;align-items:center;overflow:hidden}
-.ring3d{position:relative;width:260px;height:180px;transform-style:preserve-3d;animation:spin3d 18s linear infinite}
-.ring3d:hover{animation-play-state:paused}
-@keyframes spin3d{from{transform:rotateY(0)}to{transform:rotateY(360deg)}}
-.panel{position:absolute;inset:0;transform:rotateY(calc(var(--i)*60deg)) translateZ(300px);background:#111;border:1px solid #c9a227;border-radius:14px;overflow:hidden}
-.panel img{width:100%;height:140px;object-fit:cover}
-.panel p{text-align:center;margin:6px;color:#c9a227;font-weight:bold}
-.hero h1{background:linear-gradient(90deg,#fff,#c9a227,#fff,#c9a227);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 4s linear infinite}
-@keyframes shine{to{background-position:200% center}}
-.card{transform-style:preserve-3d}
-</style></head><body>
-<header><div class="logo">DUBAI NIGHT RENTALS</div><a class="btn" href="#fleet" style="padding:10px 20px">Book Now</a></header>
-<div class="hero" style="background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.88)),url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1600') center/cover"><canvas id="hero3d"></canvas><div style="position:relative;z-index:1"><p class="quote">We don't rent cars. We hand you the keys.</p><h1>DRIVE THE<br>DUBAI NIGHT</h1><p>YOUR SEAT IS WAITING.</p><p class="sub">Bugatti, Rolls-Royce, Lamborghini, delivered to your hotel or the airport.</p><a class="btn" href="#fleet">See The Fleet</a></div></div>
-<section class="reveal"><h2>The Fleet</h2><div class="grid">
-<div class="card"><img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=800"><div><h3>Bugatti Chiron</h3><p class="price">AED 12,000 / day</p><p>1500 HP, top speed 420 km/h.</p></div></div>
-<div class="card"><img src="https://images.unsplash.com/photo-1563720223185-11003d516935?w=800"><div><h3>Rolls-Royce Cullinan</h3><p class="price">AED 4,500 / day</p><p>First class comfort, chauffeur on request.</p></div></div>
-<div class="card"><img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=800"><div><h3>Mercedes G-Wagon</h3><p class="price">AED 1,800 / day</p><p>Iconic, powerful, Dubai favourite.</p></div></div>
-<div class="card"><img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800"><div><h3>Lamborghini Revuelto</h3><p class="price">AED 9,500 / day</p><p>V12 hybrid, head turning everywhere.</p></div></div>
-<div class="card"><img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800"><div><h3>McLaren 720S</h3><p class="price">AED 3,200 / day</p><p>Light, fast, pure driving thrill.</p></div></div>
-<div class="card"><img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800"><div><h3>Aston Martin DB12</h3><p class="price">AED 3,800 / day</p><p>British luxury, grand tourer.</p></div></div>
-</div></section>
-<section class="reveal"><h2>Experience in 3D</h2><div class="stage"><div class="ring3d">
-<div class="panel" style="--i:0"><img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=600"><p>Bugatti Chiron</p></div>
-<div class="panel" style="--i:1"><img src="https://images.unsplash.com/photo-1563720223185-11003d516935?w=600"><p>Rolls-Royce Cullinan</p></div>
-<div class="panel" style="--i:2"><img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=600"><p>Mercedes G-Wagon</p></div>
-<div class="panel" style="--i:3"><img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=600"><p>Lamborghini Revuelto</p></div>
-<div class="panel" style="--i:4"><img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=600"><p>McLaren 720S</p></div>
-<div class="panel" style="--i:5"><img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=600"><p>Aston Martin DB12</p></div>
-</div></div><p style="text-align:center;color:#c9a227">Drag nahi, ye khud ghumta hai, har car 3D me</p></section>
-<section class="book reveal"><h2>Book in 30 seconds</h2><p>Pick your car, dates and delivery location.</p><select><option>Bugatti Chiron</option><option>Rolls-Royce Cullinan</option><option>Mercedes G-Wagon</option><option>Lamborghini Revuelto</option></select><br><input type="date"><br><a class="btn" href="https://wa.me/971500000000">Book on WhatsApp</a></section>
-<footer>Dubai Night Rentals, Dubai, UAE</footer>
-<script>const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('show')}));document.querySelectorAll('.reveal').forEach(el=>io.observe(el));</script>
-<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js"}}</script>
-<script type="module">import * as THREE from 'three';const c=document.getElementById('hero3d');if(c){const s=new THREE.Scene();const cam=new THREE.PerspectiveCamera(45,innerWidth/innerHeight,.1,100);cam.position.set(0,1,6);const r=new THREE.WebGLRenderer({canvas:c,antialias:true,alpha:true});r.setSize(innerWidth,innerHeight);r.setPixelRatio(Math.min(devicePixelRatio,2));s.add(new THREE.DirectionalLight(0xffffff,2));s.add(new THREE.AmbientLight(0xffffff,.4));const m=new THREE.Mesh(new THREE.TorusKnotGeometry(.9,.28,200,32),new THREE.MeshPhysicalMaterial({color:0xc9a227,roughness:.15,metalness:.85,clearcoat:1}));m.position.set(0,0,-1);s.add(m);const rings=[];for(let i=0;i<3;i++){const rg=new THREE.Mesh(new THREE.TorusGeometry(1.6+i*.45,.025,16,100),new THREE.MeshPhysicalMaterial({color:0xc9a227,roughness:.3,metalness:.8}));rg.position.set(0,0,-1);s.add(rg);rings.push(rg)}const pg=new THREE.BufferGeometry();const pos=[];for(let i=0;i<350;i++){pos.push((Math.random()-.5)*12,(Math.random()-.5)*7,(Math.random()-.5)*5)}pg.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));const pts=new THREE.Points(pg,new THREE.PointsMaterial({color:0xc9a227,size:.06}));s.add(pts);let tx=0,ty=0;addEventListener('pointermove',e=>{tx=(e.clientX/innerWidth-.5)*2;ty=(e.clientY/innerHeight-.5)*2});const cl=new THREE.Clock();(function fr(){const tm=cl.getElapsedTime();m.rotation.y=tm*.4;m.rotation.x=tm*.15;rings.forEach((rg,i)=>{rg.rotation.x=tm*(.2+i*.1);rg.rotation.y=tm*.15});pts.rotation.y=tm*.05;cam.position.x=tx*.8;cam.position.y=1-ty*.5;cam.lookAt(0,0,-1);r.render(s,cam);requestAnimationFrame(fr)})();}</script>
-</body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drive The Dubai Night | Luxury Car Rental Dubai</title>
+<meta name="description" content="Luxury and sports car rental in Dubai. No deposit, free delivery in 30 minutes, 250 km per day included, 24/7 support.">
+<!--
+IMAGES USED (all local in assets/, each used exactly once, none reused anywhere else):
+- hero.jpg — blue Lamborghini Huracan, Dubai skyline + Burj Khalifa at dusk (pinimg re-host, downloaded 24 Nov 2026)
+- urus-1610.jpg — blue Lamborghini Urus, Meydan Bridge Dubai (Pexels 18509924)
+- g63-1610.jpg — black Mercedes-AMG G63, front 3/4, modern garage (Pexels 14445440)
+- cullinan-1610.jpg — black Rolls-Royce Cullinan, under overpass (rentmyride CDN)
+- porsche911-1610.jpg — black Porsche 911 Turbo S, night city light trails (Squarespace CDN, photo by Alex Kinter)
+- huracan-1610.jpg — yellow Lamborghini Huracan EVO Spyder, waterfront at night (tapeciarnia; 600px source, soft at card width)
+- mclaren720s-1610.jpg — orange McLaren 720S, dark cobblestone street (Cloudinary; 720px source, Italian plate visible)
+- bentley-1610.jpg — black Bentley Continental GT Convertible, front view (Pexels 8641224 by Ishan Kulshrestha)
+- rangerover-1610.jpg — black Range Rover Autobiography, night, modern house (MotorTrend; older Gen-3 shape, labelled without year)
+PRICES: Trinity column from the research file, except Bentley Continental GT (AED 2,500, Octane column — Trinity price not captured).
+All images are local files in assets/; no external image hotlinks, no web 3D library, no rotating geometric shapes, no gradient headline text, no serif fonts.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#050508;--sec:#0B0B0D;--sec2:#111114;--text:#fff;--muted:#B0B0B5;--gold:#C9A227;--line:#222;--wa:#25D366}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);font-size:16px;line-height:1.6;overflow-x:hidden}
+h1,h2,h3,.label{font-family:'Montserrat',sans-serif;text-transform:uppercase;letter-spacing:.08em}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+.label{color:var(--gold);font-size:12px;font-weight:700;letter-spacing:.18em}
+h2{font-size:clamp(26px,4vw,38px);font-weight:800;margin:10px 0 8px}
+section{padding:72px 0}
+section.alt{background:var(--sec)}
+section.alt2{background:var(--sec2)}
+.sec-sub{color:var(--muted);max-width:640px;margin-bottom:36px}
+/* header */
+header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(5,5,8,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:'Montserrat',sans-serif;font-weight:900;letter-spacing:.14em;font-size:15px}
+.logo span{color:var(--gold)}
+header nav a{margin-left:22px;font-size:14px;color:var(--muted)}
+header nav a:hover{color:var(--text)}
+/* hero */
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 60px;background:linear-gradient(180deg,rgba(5,5,8,.55) 0%,rgba(5,5,8,.25) 45%,rgba(5,5,8,.92) 100%),url('assets/hero.jpg') center 30%/cover no-repeat}
+.hero h1{font-size:clamp(40px,7.5vw,76px);font-weight:900;line-height:1.05;color:#fff}
+.hero .promise{margin:18px 0 28px;font-size:18px;color:#EDEDED;max-width:560px}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:22px}
+.btn{display:inline-block;padding:14px 28px;border-radius:6px;font-weight:700;font-size:15px;cursor:pointer;border:0}
+.btn-gold{background:var(--gold);color:#000}
+.btn-ghost{background:transparent;color:#fff;border:1px solid #555}
+.btn-wa{background:var(--wa);color:#fff}
+.trust{color:var(--muted);font-size:14px}
+.trust b{color:var(--gold)}
+/* booking widget */
+.widget{margin-top:30px;background:rgba(11,11,13,.92);border:1px solid var(--line);border-radius:12px;padding:20px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.widget label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.08em}
+.widget input,.widget select{width:100%;padding:12px;border-radius:6px;border:1px solid #333;background:#1A1A1E;color:#fff;font-size:15px}
+.widget .btn{width:100%;padding:13px}
+.widget-note{grid-column:1/-1;font-size:13px;color:var(--muted)}
+/* brand strip */
+.brands{padding:26px 0;border-bottom:1px solid var(--line);background:var(--sec)}
+.brands .wrap{display:flex;flex-wrap:wrap;gap:18px 34px;justify-content:center;color:#777;font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase}
+/* fleet */
+.tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px}
+.tab{padding:10px 20px;border-radius:30px;border:1px solid #333;background:transparent;color:var(--muted);font-size:14px;font-weight:600;cursor:pointer}
+.tab.active{background:var(--gold);color:#000;border-color:var(--gold)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:var(--sec2);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:transform .3s ease,border-color .3s ease}
+.card:hover{transform:translateY(-6px);border-color:#3A3A40}
+.card .imgwrap{overflow:hidden;aspect-ratio:16/10}
+.card img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.card:hover img{transform:scale(1.06)}
+.card-body{padding:20px}
+.card-body h3{font-size:18px;letter-spacing:.05em}
+.specs{color:var(--muted);font-size:13.5px;margin:10px 0 14px;display:flex;flex-wrap:wrap;gap:6px 0}
+.specs span{padding-right:12px;margin-right:12px;border-right:1px solid #333}
+.specs span:last-child{border-right:0;padding-right:0;margin-right:0}
+.price{font-size:14px;color:var(--muted)}
+.price b{color:var(--gold);font-size:26px;font-weight:800}
+.card .btn-wa{display:block;text-align:center;margin-top:16px;padding:12px}
+.empty{grid-column:1/-1;color:var(--muted);padding:30px 0;text-align:center}
+/* why us */
+.why{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.why-item{border-top:2px solid var(--gold);padding-top:18px}
+.why-item .num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:34px;color:var(--gold)}
+.why-item h3{font-size:16px;margin:10px 0 6px}
+.why-item p{color:var(--muted);font-size:14.5px}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.step{background:var(--sec2);border:1px solid var(--line);border-radius:14px;padding:28px}
+.step .num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:34px;color:var(--gold)}
+.step h3{font-size:17px;margin:12px 0 6px}
+.step p{color:var(--muted);font-size:14.5px}
+/* services */
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.service{border:1px solid var(--line);border-radius:14px;padding:26px;background:var(--sec)}
+.service h3{font-size:16px;margin-bottom:6px}
+.service p{color:var(--muted);font-size:14.5px}
+/* faq */
+.faq-item{border-bottom:1px solid var(--line);padding:18px 0}
+.faq-item h3{font-size:16px;letter-spacing:.02em;text-transform:none;cursor:pointer}
+.faq-item p{color:var(--muted);font-size:15px;margin-top:8px;max-width:760px}
+/* final cta */
+.final{text-align:center}
+.final h2{font-size:clamp(30px,5vw,46px)}
+.final p{color:var(--muted);margin:12px auto 26px;max-width:560px}
+.final .widget{max-width:820px;margin:0 auto;text-align:left}
+/* footer */
+footer{border-top:1px solid var(--line);padding:44px 0 34px;background:var(--sec)}
+footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}
+footer h4{font-family:'Montserrat',sans-serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px}
+footer p,footer a{color:var(--muted);font-size:14px}
+footer a{display:block;margin-bottom:8px}
+footer .bottom{margin-top:34px;padding-top:20px;border-top:1px solid var(--line);color:#666;font-size:13px;text-align:center}
+@media (max-width:900px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .why{grid-template-columns:repeat(2,1fr)}
+  .widget{grid-template-columns:repeat(2,1fr)}
+  header nav{display:none}
+}
+@media (max-width:600px){
+  section{padding:52px 0}
+  .grid,.steps,.services{grid-template-columns:1fr}
+  .widget{grid-template-columns:1fr}
+  footer .cols{grid-template-columns:1fr}
+  .hero{padding-top:100px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="logo">DUBAI <span>NIGHT</span> RENTALS</div>
+    <nav>
+      <a href="#fleet">Fleet</a>
+      <a href="#why">Why us</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+      <a href="#book">Book now</a>
+    </nav>
+  </div>
+</header>
+
+<!-- 1. HERO -->
+<div class="hero">
+  <div class="wrap">
+    <p class="label">Luxury car rental Dubai</p>
+    <h1>Drive the<br>Dubai Night</h1>
+    <p class="promise">No deposit. Free delivery in 30 minutes. 250 km per day included.</p>
+    <div class="cta-row">
+      <a class="btn btn-gold" href="#fleet">View the fleet</a>
+      <a class="btn btn-wa" href="#book">Book on WhatsApp</a>
+    </div>
+    <p class="trust"><b>No deposit</b> &nbsp;·&nbsp; Free delivery in Dubai &nbsp;·&nbsp; 250 km/day included &nbsp;·&nbsp; Insurance included &nbsp;·&nbsp; 24/7 support</p>
+
+    <form class="widget" id="hero-widget" onsubmit="return searchCars(event)">
+      <div>
+        <label for="pickup">Pickup date</label>
+        <input type="date" id="pickup" name="pickup" required>
+      </div>
+      <div>
+        <label for="return">Return date</label>
+        <input type="date" id="return" name="return" required>
+      </div>
+      <div>
+        <label for="category">Car category</label>
+        <select id="category" name="category">
+          <option value="all">All cars</option>
+          <option value="supercars">Supercars</option>
+          <option value="luxury">Luxury</option>
+          <option value="suv">SUV</option>
+          <option value="convertible">Convertible</option>
+        </select>
+      </div>
+      <div>
+        <label>&nbsp;</label>
+        <button class="btn btn-gold" type="submit">Search cars</button>
+      </div>
+      <p class="widget-note" id="widget-note">Pick your dates and a category, and we will show matching cars below.</p>
+    </form>
+  </div>
+</div>
+
+<!-- 2. BRAND STRIP -->
+<div class="brands">
+  <div class="wrap">
+    <span>Lamborghini</span><span>Ferrari</span><span>Rolls-Royce</span><span>Bentley</span><span>Porsche</span><span>McLaren</span><span>Mercedes-Benz</span><span>Range Rover</span>
+  </div>
+</div>
+
+<!-- 3. FLEET -->
+<section id="fleet">
+  <div class="wrap">
+    <p class="label">The fleet</p>
+    <h2>Choose your car</h2>
+    <p class="sec-sub">Every car is delivered clean, fuelled and ready to drive, anywhere in Dubai.</p>
+    <div class="tabs" id="tabs">
+      <button class="tab active" data-cat="all" onclick="filterFleet('all',this)">All</button>
+      <button class="tab" data-cat="supercars" onclick="filterFleet('supercars',this)">Supercars</button>
+      <button class="tab" data-cat="luxury" onclick="filterFleet('luxury',this)">Luxury</button>
+      <button class="tab" data-cat="suv" onclick="filterFleet('suv',this)">SUV</button>
+      <button class="tab" data-cat="convertible" onclick="filterFleet('convertible',this)">Convertible</button>
+    </div>
+    <div class="grid" id="fleet-grid">
+
+      <article class="card" data-cat="suv">
+        <div class="imgwrap"><img src="assets/urus-1610.jpg" alt="Blue Lamborghini Urus on Meydan Bridge, Dubai" loading="lazy" width="1260" height="788"></div>
+        <div class="card-body">
+          <h3>Lamborghini Urus</h3>
+          <p class="specs"><span>2023</span><span>0–100: 3.6 s</span><span>305 km/h</span><span>5 seats</span></p>
+          <p class="price">from <b>AED 2,500</b> / day</p>
+          <a class="btn btn-wa" href="#book" data-car="Lamborghini Urus" onclick="pickCar('Lamborghini Urus','suv')">Book on WhatsApp</a>
+        </div>
+      </article>
+
+      <article class="card" data-cat="suv">
+        <div class="imgwrap"><img src="assets/g63-1610.jpg" alt="Black Mercedes-AMG G63, front three-quarter view" loading="lazy" width="1260" height="788"></div>
+        <div class="card-body">
+          <h3>Mercedes-AMG G63</h3>
+          <p class="specs"><span>2023</span><span>0–100: 4.5 s</span><span>220 km/h</span><span>5 seats</span></p>
+          <p class="price">from <b>AED 1,500</b> / day</p>
+          <a class="btn btn-wa" href="#book" data-car="Mercedes-AMG G63" onclick="pickCar('Mercedes-AMG G63','suv')">Book on WhatsApp</a>
+        </div>
+      </article>
+
+      <article class="card" data-cat="luxury">
+        <div class="imgwrap"><img src="assets/cullinan-1610.jpg" alt="Black Rolls-Royce Cullinan under an overpass" loading="lazy" width="1260" height="788"></div>
+        <div class="card-body">
+          <h3>Rolls-Royce Cullinan</h3>
+          <p class="specs"><span>2023</span><span>0–100: 5.2 s</span><span>250 km/h</span><span>5 seats</span></p>
+          <p class="price">from <b>AED 4,500</b> / day</p>
+          <a class="btn btn-wa" href="#book" data-car="Rolls-Royce Cullinan" onclick="pickCar('Rolls-Royce Cullinan','luxury')">Book on WhatsApp</a>
+        </div>
+      </article>
+
+      <article class="card" data-cat="supercars">
+        <div class="imgwrap"><img src="assets/porsche911-1610.jpg" alt="Black Porsche 911 Turbo S driving through a night city" loading="lazy" width="1260" height="788"></div>
+        <div class="card-body">
+          <h3>Porsche 911 Turbo S</h3>
+          <p class="specs"><span>2023</span><span>0–100: 2.7 s</span><span>330 km/h</span><span>4 seats</span></p>
+          <p class="price">from <b>AED 1,800</b> / day</p>
+          <a class="btn btn-wa" href="#book" data-car="Porsche 911 Turbo S" onclick="pickCar('Porsche 911 Turbo S','supercars')">Book on WhatsApp</a>
+        </div>
+      </article>
+
+      <article class="card" data-cat="convertible">
+        <div class="imgwrap"><img src="assets/huracan-1610.jpg" alt="Yellow Lamborghini Huracan EVO Spyder at a waterfront at night" loading="lazy" width="1260" height="788"></div>
+        <div class="card-body">
+          <h3>Lamborghini Huracan EVO Spyder</h3>
+          <p class="specs"><span>2023</span><span>0–100: 2.9 s</span><span>325 km/h</span><span>2 seats</span></p>
+          <p class="price">from <b>AED 2,500</b> / day</p>
+          <a class="btn btn-wa" href="#book" data-car="Lamborghini Huracan EVO Spyder" onclick="pickCar('Lamborghini Huracan EVO Spyder','convertible')">Book on WhatsApp</a>
+        </div>
+      </article>
+
+      <article class="card" data-cat="supercars">
+        <div class="imgwrap"><img src="assets/mclaren720s-1610.jpg" alt="Orange McLaren 720S on a dark cobblestone street" loading="lazy" width="1260" height="788"></div>
+        <div class="card-body">
+          <h3>McLaren 720S</h3>
+          <p class="specs"><span>2022</span><span>0–100: 2.9 s</span><span>341 km/h</span><span>2 seats</span></p>
+          <p class="price">from <b>AED 3,500</b> / day</p>
+          <a class="btn btn-wa" href="#book" data-car="McLaren 720S" onclick="pickCar('McLaren 720S','supercars')">Book on WhatsApp</a>
+        </div>
+      </article>
+
+      <article class="card" data-cat="luxury">
+        <div class="imgwrap"><img src="assets/bentley-1610.jpg" alt="Black Bentley Continental GT Convertible, front view" loading="lazy" width="1260" height="788"></div>
+        <div class="card-body">
+          <h3>Bentley Continental GT</h3>
+          <p class="specs"><span>2023</span><span>0–100: 3.6 s</span><span>333 km/h</span><span>4 seats</span></p>
+          <p class="price">from <b>AED 2,500</b> / day</p>
+          <a class="btn btn-wa" href="#book" data-car="Bentley Continental GT" onclick="pickCar('Bentley Continental GT','luxury')">Book on WhatsApp</a>
+        </div>
+      </article>
+
+      <article class="card" data-cat="suv">
+        <div class="imgwrap"><img src="assets/rangerover-1610.jpg" alt="Black Range Rover Autobiography at night in front of a modern house" loading="lazy" width="1260" height="788"></div>
+        <div class="card-body">
+          <h3>Range Rover Autobiography</h3>
+          <p class="specs"><span>0–100: 5.4 s</span><span>225 km/h</span><span>5 seats</span><span>510 hp</span></p>
+          <p class="price">from <b>AED 1,500</b> / day</p>
+          <a class="btn btn-wa" href="#book" data-car="Range Rover Autobiography" onclick="pickCar('Range Rover Autobiography','suv')">Book on WhatsApp</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- 4. WHY US -->
+<section class="alt" id="why">
+  <div class="wrap">
+    <p class="label">Why us</p>
+    <h2>Renting, made simple</h2>
+    <p class="sec-sub">The same terms the best Dubai rental companies offer, with no surprises.</p>
+    <div class="why">
+      <div class="why-item">
+        <div class="num">01</div>
+        <h3>No deposit</h3>
+        <p>Book without a security deposit. Your card is only used for the rental itself.</p>
+      </div>
+      <div class="why-item">
+        <div class="num">02</div>
+        <h3>Free delivery in 30 min</h3>
+        <p>We deliver to your hotel, home or the airport anywhere in Dubai, usually within 30 minutes.</p>
+      </div>
+      <div class="why-item">
+        <div class="num">03</div>
+        <h3>250 km/day + insurance</h3>
+        <p>250 km per day included, with insurance included in every rental price.</p>
+      </div>
+      <div class="why-item">
+        <div class="num">04</div>
+        <h3>24/7 WhatsApp support</h3>
+        <p>Real help any time, day or night, from booking to return.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. HOW IT WORKS -->
+<section id="how">
+  <div class="wrap">
+    <p class="label">How it works</p>
+    <h2>On the road in 3 steps</h2>
+    <p class="sec-sub">Book in less than 2 minutes. Delivery within 2 hours, anywhere in Dubai.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Choose your car</h3>
+        <p>Pick a car and your dates from the fleet above, then send us your booking on WhatsApp.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Send your documents</h3>
+        <p>Tourists: passport, visit visa, driving licence and international driving permit. Residents: Emirates ID and UAE driving licence.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>We deliver</h3>
+        <p>Your car arrives clean and fuelled at your hotel, home or the airport. Drive, and we collect it when you are done.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. SERVICES -->
+<section class="alt2">
+  <div class="wrap">
+    <p class="label">Services</p>
+    <h2>More than a daily rental</h2>
+    <p class="sec-sub">One fleet, every way you want to use it.</p>
+    <div class="services">
+      <div class="service"><h3>Daily / Weekly / Monthly</h3><p>Rent by the day, or take a weekly or monthly rate for longer stays in Dubai.</p></div>
+      <div class="service"><h3>Chauffeur drive</h3><p>A professional driver with your car, for meetings, events or a night out.</p></div>
+      <div class="service"><h3>Airport delivery</h3><p>Your car waiting at Dubai International Airport when you land, and collected when you leave.</p></div>
+      <div class="service"><h3>Weddings &amp; events</h3><p>Supercars and luxury cars for weddings, photo shoots and special occasions.</p></div>
+      <div class="service"><h3>Business &amp; corporate</h3><p>Monthly accounts for companies, with one invoice and priority delivery.</p></div>
+      <div class="service"><h3>City tours</h3><p>Drive the Dubai night yourself: Marina, Downtown and Sheikh Zayed Road, your way.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <p class="label">FAQ</p>
+    <h2>Questions, answered</h2>
+    <p class="sec-sub">The things every renter asks before booking.</p>
+    <div class="faq-item">
+      <h3>What documents do I need to rent a car?</h3>
+      <p>Tourists need a passport, a visit visa, a driving licence from their home country and an international driving permit. UAE residents need an Emirates ID and a UAE driving licence.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What is the minimum age to rent?</h3>
+      <p>21 years for most cars, and 25 years for supercars and high-performance models. Your licence must have been held for at least one year.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is a deposit required?</h3>
+      <p>No. There is no security deposit on our rentals. Your card is only charged for the rental itself.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How many kilometres are included?</h3>
+      <p>250 km per day is included in every rental. Extra kilometres are charged per km, and the rate is confirmed before you book.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is insurance included?</h3>
+      <p>Yes, insurance is included in the daily price. Full cover options are available on request.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Where do you deliver?</h3>
+      <p>Anywhere in Dubai: hotels, homes, offices and Dubai International Airport. Delivery is free inside Dubai and usually takes around 30 minutes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 8. FINAL CTA -->
+<section class="alt final" id="book">
+  <div class="wrap">
+    <p class="label">Ready when you are</p>
+    <h2>Ready to hit the road?</h2>
+    <p>Pick your dates and your car below, then send the booking on WhatsApp. We reply within minutes, 24/7.</p>
+    <form class="widget" id="book-widget" onsubmit="return bookNow(event)">
+      <div>
+        <label for="b-pickup">Pickup date</label>
+        <input type="date" id="b-pickup" required>
+      </div>
+      <div>
+        <label for="b-return">Return date</label>
+        <input type="date" id="b-return" required>
+      </div>
+      <div>
+        <label for="b-car">Your car</label>
+        <select id="b-car">
+          <option value="">Any car — help me choose</option>
+          <option>Lamborghini Urus</option>
+          <option>Mercedes-AMG G63</option>
+          <option>Rolls-Royce Cullinan</option>
+          <option>Porsche 911 Turbo S</option>
+          <option>Lamborghini Huracan EVO Spyder</option>
+          <option>McLaren 720S</option>
+          <option>Bentley Continental GT</option>
+          <option>Range Rover Autobiography</option>
+        </select>
+      </div>
+      <div>
+        <label>&nbsp;</label>
+        <button class="btn btn-wa" type="submit">Book on WhatsApp</button>
+      </div>
+      <p class="widget-note" id="book-note">Your booking message is prepared here and opens in WhatsApp. Add your real WhatsApp business number in the page code before going live.</p>
+    </form>
+  </div>
+</section>
+
+<!-- 9. FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4>Dubai Night Rentals</h4>
+        <p>Luxury and sports car rental in Dubai.<br>No deposit. Free delivery in 30 minutes.<br>250 km per day included. 24/7 support.</p>
+      </div>
+      <div>
+        <h4>Fleet</h4>
+        <a href="#fleet">Supercars</a>
+        <a href="#fleet">Luxury</a>
+        <a href="#fleet">SUV</a>
+        <a href="#fleet">Convertible</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="#why">Why us</a>
+        <a href="#how">How it works</a>
+        <a href="#faq">FAQ</a>
+        <a href="#book">Book now</a>
+      </div>
+    </div>
+    <p class="bottom">Dubai Night Rentals — Dubai, UAE — Open 24/7. Prices shown are from AED per day and may change by season and availability.</p>
+  </div>
+</footer>
+
+<script>
+// Fleet filter (hero widget + tabs)
+function setActiveTab(cat){
+  document.querySelectorAll('#tabs .tab').forEach(function(t){
+    t.classList.toggle('active', t.getAttribute('data-cat')===cat);
+  });
+}
+function filterFleet(cat, btn){
+  var shown = 0;
+  document.querySelectorAll('#fleet-grid .card').forEach(function(c){
+    var ok = (cat==='all' || c.getAttribute('data-cat')===cat);
+    c.style.display = ok ? '' : 'none';
+    if(ok) shown++;
+  });
+  var grid = document.getElementById('fleet-grid');
+  var old = grid.querySelector('.empty');
+  if(old) old.remove();
+  if(shown===0){
+    var p = document.createElement('p');
+    p.className = 'empty';
+    p.textContent = 'No cars in this category yet.';
+    grid.appendChild(p);
+  }
+  setActiveTab(cat);
+  var sel = document.getElementById('category');
+  if(sel) sel.value = cat;
+}
+function searchCars(e){
+  e.preventDefault();
+  var p = document.getElementById('pickup').value;
+  var r = document.getElementById('return').value;
+  var cat = document.getElementById('category').value;
+  if(p && r && r < p){
+    document.getElementById('widget-note').textContent = 'Return date must be after the pickup date.';
+    return false;
+  }
+  filterFleet(cat);
+  var note = document.getElementById('widget-note');
+  var label = cat==='all' ? 'all cars' : document.querySelector('#tabs .tab[data-cat="'+cat+'"]').textContent;
+  note.textContent = (p && r)
+    ? 'Showing ' + label + ' for ' + p + ' to ' + r + '. Choose a car below.'
+    : 'Showing ' + label + '. Choose a car below.';
+  document.getElementById('fleet').scrollIntoView({behavior:'smooth'});
+  return false;
+}
+// Card button: preselect the car in the booking form and scroll to it
+function pickCar(car, cat){
+  var sel = document.getElementById('b-car');
+  if(sel){
+    for(var i=0;i<sel.options.length;i++){
+      if(sel.options[i].value===car){ sel.selectedIndex=i; break; }
+    }
+  }
+  document.getElementById('book-note').textContent = car + ' selected. Add your dates and tap Book on WhatsApp.';
+}
+// Booking form: build the WhatsApp message (number must be set by the owner before going live)
+var WHATSAPP_NUMBER = '';
+function bookNow(e){
+  e.preventDefault();
+  var p = document.getElementById('b-pickup').value;
+  var r = document.getElementById('b-return').value;
+  var car = document.getElementById('b-car').value || 'a luxury car';
+  if(p && r && r < p){
+    document.getElementById('book-note').textContent = 'Return date must be after the pickup date.';
+    return false;
+  }
+  var msg = 'Hi, I want to rent the ' + car + ' from ' + (p || '—') + ' to ' + (r || '—') + '. Is it available?';
+  if(!WHATSAPP_NUMBER){
+    document.getElementById('book-note').textContent = 'Message ready: "' + msg + '" — add the WhatsApp business number in the page code to open WhatsApp.';
+    return false;
+  }
+  window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(msg), '_blank');
+  return false;
+}
+</script>
+</body>
+</html>
